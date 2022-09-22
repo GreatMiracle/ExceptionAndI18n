@@ -22,6 +22,6 @@ public class testApi {
 
     @GetMapping("/")
     public ResponseEntity<BodyResponseDTO<Object>> getAllABC() {
-        return RestResponseWrapper.getSuccess( testApiService.testException());
+        return RestResponseWrapper.getSuccess( testApiService.testException(), messageUtils);
     }
 }
