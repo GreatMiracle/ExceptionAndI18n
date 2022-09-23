@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.web.rest;
 
 import com.example.demo.service.testApiService;
 import com.example.demo.util.BodyResponseDTO;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 //@RequiredArgsConstructor
-public class testApi {
+public class ExceptionAndI18nController {
 
     private final MessageUtils messageUtils;
     private final testApiService testApiService;
 
-    public testApi(MessageUtils messageUtils, com.example.demo.service.testApiService testApiService) {
+    public ExceptionAndI18nController(MessageUtils messageUtils, com.example.demo.service.testApiService testApiService) {
         this.messageUtils = messageUtils;
         this.testApiService = testApiService;
     }
