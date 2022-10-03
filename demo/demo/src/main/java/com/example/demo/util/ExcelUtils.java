@@ -3,7 +3,7 @@ package com.example.demo.util;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class ExcelConfig {
+public class ExcelUtils {
     public static final String DEFAULT_HEADER_FILL_COLOR = "00008b";
     public static final String DEFAULT_HEADER_FONT_COLOR = "ffffff";
     public static final String CLAIM_HEADER_FILL_COLOR = "e4f9ff";

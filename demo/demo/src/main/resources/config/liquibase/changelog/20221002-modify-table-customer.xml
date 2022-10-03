@@ -1,0 +1,52 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20221002_1015-UPDATE-RECORD-CUSTOMER" author="ntkien16">
+        <sql>
+            INSERT INTO `customer` (`age`, `username`, `address`) VALUES ('14', 'nguyen văn a', 'ha noi');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="20221002_1016-UPDATE-RECORD-CUSTOMER" author="admin">
+        <sql>
+            INSERT INTO `customer` (`age`, `username`, `address`) VALUES ('20', 'mativaldo', 'Angola');
+
+        </sql>
+    </changeSet>
+
+<!--    <changeSet id="20221002_1016-UPDATE-BY-CSV" author="kien">-->
+<!--        <loadData-->
+<!--                commentLineStartsWith="//"-->
+<!--                encoding="UTF-8"-->
+<!--                file="config/liquibase/csv/customer.csv"-->
+<!--                quotchar="'"-->
+<!--                relativeToChangelogFile="false"-->
+<!--                separator=","-->
+<!--                tableName="CUSTOMER"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column index="0" name="id" type="NUMERIC"/>-->
+<!--            <column index="1" name="age" type="NUMERIC"/>-->
+<!--            <column index="2" name="username" type="STRING"/>-->
+<!--            <column index="3" name="address" type="STRING"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+
+    <changeSet id="20221002_1026-UPDATE-BY-CSV1" author="kien">
+        <loadData
+                commentLineStartsWith="//"
+                encoding="UTF-8"
+                file="config/liquibase/csv/customer.csv"
+                quotchar="'"
+                relativeToChangelogFile="false"
+                separator=","
+                tableName="customer"
+                usePreparedStatements="true">
+            <column index="0" name="id" type="NUMERIC"/>
+            <column index="1" name="age" type="NUMERIC"/>
+            <column index="2" name="username" type="STRING" defaultValue="abc"/>
+            <column index="3" name="address" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

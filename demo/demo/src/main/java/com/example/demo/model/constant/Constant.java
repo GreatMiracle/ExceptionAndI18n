@@ -9,4 +9,6 @@ public class Constant {
 
     public static final String MAX_BIG_DECIMAL_VALUE = "99999999999999999999.99";
     public static final String MIN_BIG_DECIMAL_VALUE = "-99999999999999999999.99";
+
+    public static final String FIELD_VALUE = "fieldValue";
 }

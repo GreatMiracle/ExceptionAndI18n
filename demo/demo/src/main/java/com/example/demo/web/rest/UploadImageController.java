@@ -24,10 +24,8 @@ public class UploadImageController {
     private final UserRepository userRepository;
 
     @PostMapping(value = "/upload/image", consumes = "multipart/form-data")
-//    public void saveUser(@RequestBody UserDTO user){
 //    public void saveUser(@RequestPart UserDTO user, @RequestPart("image") MultipartFile multipartFile) throws IOException {
     public void saveUser(@ModelAttribute UserDTO user) throws IOException {
-//    public void saveUser( @RequestParam("image") MultipartFile multipartFiSle) throws IOException {
         String fileName = StringUtils.cleanPath(user.getAvatar().getOriginalFilename());
 
         User updateUser = User.builder().id(user.getId())
