@@ -1,0 +1,35 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail.smtp.starttls.enable: true
+      mail.smtp.auth: true
+      mail.smtp.ssl.trust: smtp.gmail.com
+      mail.smtp.connectiontimeout: 30000
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2MB
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+cloud:
+  aws:
+    credentials:
+      access-key: AKIA3Y7CZBCQEFE4LV4J
+      secret-key: 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
+    region:
+      static: ap-southeast-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: miracle-bucket-testconfig
+server:
+  port: 9090
