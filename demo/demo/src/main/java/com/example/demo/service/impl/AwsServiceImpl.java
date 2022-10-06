@@ -1,9 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.services.s3.model.*;
 import com.amazonaws.util.IOUtils;
 import com.example.demo.service.AwsService;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +47,9 @@ public class AwsServiceImpl implements AwsService {
 
     @Override
     public String deleteFile(String fileName) {
+
         s3Client.deleteObject(bucketName, fileName);
+//        s3Client.deleteVersion(new DeleteVersionRequest(bucketName, fileName, putResult.getVersionId()));
         return fileName + " removed ...";
     }
 
