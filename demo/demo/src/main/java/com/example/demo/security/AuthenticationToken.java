@@ -11,7 +11,8 @@ public class AuthenticationToken extends AbstractAuthenticationToken {
 
     public AuthenticationToken(String username, String password) {
         super((Collection)null);
-        this.password =  password + username;
+//        this.password =  password + username;
+        this.password =  password;
         this.username = username;
         this.setAuthenticated(false);
     }

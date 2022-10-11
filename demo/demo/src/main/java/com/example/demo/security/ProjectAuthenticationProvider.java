@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.example.demo.model.User;
 import com.example.demo.respository.UserRepository;
+import com.example.demo.util.Base64Common;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -29,10 +30,10 @@ public class  ProjectAuthenticationProvider implements AuthenticationProvider {
         AuthenticationToken authenticationToken = (AuthenticationToken) authentication;
         String username = authenticationToken.getPrincipal().toString();
         Optional<User> authenticatedUser = userRepository.findByEmailAndEnabledIsTrue(username);
-
+        String pwd = Base64Common.decodeBaseToString(authenticationToken.getPassword());
         if (authenticatedUser.isPresent()) {
-//            if (BCrypt.checkpw(authenticationToken.getPassword(), authenticatedUser.get().getPassword())) {
-            if (authenticationToken.getPassword().equals(authenticatedUser.get().getPassword().concat(authenticatedUser.get().getEmail()))) {
+            if (BCrypt.checkpw(pwd, authenticatedUser.get().getPassword())) {
+//            if (authenticationToken.getPassword().equals(authenticatedUser.get().getPassword().concat(authenticatedUser.get().getEmail()))) {
                 UserPrincipal userDetails = UserPrincipal.create(authenticatedUser.get());
                 return new UsernamePasswordAuthenticationToken(authenticatedUser.get(), authentication.getCredentials(), userDetails.getAuthorities());
             } else {

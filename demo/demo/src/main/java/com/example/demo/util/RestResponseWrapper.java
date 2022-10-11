@@ -77,7 +77,7 @@ public final class RestResponseWrapper {
     }
 
     /**
-     * @author TruongBV
+     * @author Kiennt74
      * push dev by Kiennt74
      * @date 2021/09/09
      * @time 1:45 PM
