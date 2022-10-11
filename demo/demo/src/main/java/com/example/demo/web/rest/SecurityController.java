@@ -4,6 +4,7 @@ import com.example.demo.config.enums.ApiResponseCode;
 import com.example.demo.model.User;
 import com.example.demo.security.AuthenticationToken;
 import com.example.demo.security.jwt.TokenProvider;
+import com.example.demo.service.SecurityService;
 import com.example.demo.service.UserServices;
 import com.example.demo.util.Base64Common;
 import com.example.demo.util.BodyResponseDTO;
@@ -43,6 +44,7 @@ public class SecurityController {
     private final UserServices userServices;
 
     private final PasswordEncoder passwordEncoder;
+    private final SecurityService securityService;
 
     @PostMapping("/sign-in")
     public ResponseEntity<BodyResponseDTO<JwtResponse>> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -59,34 +61,8 @@ public class SecurityController {
     @PostMapping(value = "/register")
     public ResponseEntity<BodyResponseDTO<User>> register(@RequestBody UserRegisterDTO userAdmin,
                                                           HttpServletRequest request) {
-        String uri = request.getRequestURI();
-        log.info(uri + " register user admin");
-
-        userAdmin.setEmail(Strings.trimToNull(userAdmin.getEmail()));
-        userAdmin.setPassword(Strings.trimToNull(userAdmin.getPassword()));
-        userAdmin.setFullName(Strings.trimToNull(userAdmin.getFullName()));
-
-        if (userAdmin.getEmail() == null || userAdmin.getPassword() == null) {
-            log.error(uri + " username or password is empty");
-            throw new RestException(ApiResponseCode.USERNAME_OR_PASSWORD_EMPTY);
-        }
-
-//        String username = Base64Common.decodeBaseToString(userAdmin.getEmail());
-        String pwd = Base64Common.decodeBaseToString(userAdmin.getPassword());
-
-        if (userServices.checkEmailUserIsExist(userAdmin.getEmail())) {
-            log.error(uri + " username is exist");
-            throw new RestException(ApiResponseCode.USERNAME_EXIST);
-        }
-
-        userAdmin.setPassword(passwordEncoder.encode(pwd));
-
-        User result = this.userServices.saveUser(userAdmin);
+        User result = securityService.registerUser(userAdmin, request);
         return RestResponseWrapper.getSuccess(result, messageUtils);
     }
-
-
-
-
 
 }

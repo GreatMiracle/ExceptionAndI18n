@@ -56,6 +56,7 @@ public class UserServicesImpl implements UserServices {
                 .email(userRegister.getEmail())
                 .password(userRegister.getPassword())
                 .fullName(userRegister.getFullName())
+                .enabled(true)
                 .build();
         return userRepository.save(u);
     }
