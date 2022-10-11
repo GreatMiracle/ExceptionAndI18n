@@ -16,5 +16,6 @@
 
     <include file="config/liquibase/changelog/20221002-create-table-custom.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20221002-modify-table-customer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221011-modify-table-user.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

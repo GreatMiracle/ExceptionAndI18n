@@ -8,6 +8,8 @@ public enum ApiResponseCode {
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "400", "GLOBAL.BAD_REQUEST"),
     TEST_I18N(HttpStatus.OK, "200", "GLOBAL.TEST_I18N"),
     INPUT_PARAMS_INVALID(HttpStatus.BAD_REQUEST, "400", "INPUT_PARAMS_INVALID"),
+    USERNAME_OR_PASSWORD_EMPTY(HttpStatus.BAD_REQUEST, "400", "USERNAME_OR_PASSWORD_EMPTY"),
+    USERNAME_EXIST(HttpStatus.BAD_REQUEST, "400", "USERNAME_EXIST"),
     ;
 
     private final HttpStatus status;

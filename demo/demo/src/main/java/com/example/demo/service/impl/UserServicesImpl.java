@@ -5,16 +5,14 @@ import com.example.demo.respository.UserRepository;
 import com.example.demo.service.ExportService;
 import com.example.demo.service.UserServices;
 import com.example.demo.web.rest.dto.UserExportDTO;
+import com.example.demo.web.rest.dto.UserRegisterDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,6 +43,21 @@ public class UserServicesImpl implements UserServices {
                 .exportPersonalized(fileName, dto, UserExportDTO.class, columnName);
 
         return fileName;
+    }
+
+    @Override
+    public boolean checkEmailUserIsExist(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User saveUser(UserRegisterDTO userRegister) {
+        User u = User.builder()
+                .email(userRegister.getEmail())
+                .password(userRegister.getPassword())
+                .fullName(userRegister.getFullName())
+                .build();
+        return userRepository.save(u);
     }
 
     public static UserExportDTO mapUser(User u){
