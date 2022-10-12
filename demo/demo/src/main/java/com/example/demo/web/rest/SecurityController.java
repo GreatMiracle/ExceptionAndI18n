@@ -11,6 +11,7 @@ import com.example.demo.util.BodyResponseDTO;
 import com.example.demo.util.MessageUtils;
 import com.example.demo.util.RestResponseWrapper;
 import com.example.demo.util.exception.RestException;
+import com.example.demo.web.rest.dto.ChangePasswordRequestDTO;
 import com.example.demo.web.rest.dto.JwtResponse;
 import com.example.demo.web.rest.dto.LoginRequest;
 import com.example.demo.web.rest.dto.UserRegisterDTO;
@@ -64,5 +65,12 @@ public class SecurityController {
         User result = securityService.registerUser(userAdmin, request);
         return RestResponseWrapper.getSuccess(result, messageUtils);
     }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<BodyResponseDTO<Object>> changePassword(
+            @Valid @RequestBody ChangePasswordRequestDTO request) {
+        return RestResponseWrapper.getSuccess(securityService.changePassword(request),messageUtils);
+    }
+
 
 }

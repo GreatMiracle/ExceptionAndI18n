@@ -17,4 +17,7 @@ public class Constant {
     public static final String ROLE_PREFIX = "ROLE";
 
     public static final String SYSTEM = "system";
+
+    private static final String EMAIL_REGEX = "^(?=.{1,}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+    private static final String PASSWORD_REGEX = "^(?=.{0,})((?=.*[^a-zA-Z\\s])(?=.*[a-z])(?=.*[A-Z])|(?=.*[^a-zA-Z0-9\\s])(?=.*\\d)(?=.*[a-zA-Z])).*$";
 }

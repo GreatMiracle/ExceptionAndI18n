@@ -11,4 +11,5 @@ public interface UserServices {
 
     boolean checkEmailUserIsExist(String username);
     User saveUser(UserRegisterDTO userRegister);
+
 }

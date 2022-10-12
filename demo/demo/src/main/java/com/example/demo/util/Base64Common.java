@@ -7,6 +7,7 @@ public class Base64Common {
     public static String decodeBaseToString(String base64String) {
         byte[] base64 = base64String.getBytes(StandardCharsets.UTF_8);
         byte[] decode = Base64.getDecoder().decode(base64);
+//        byte[] encode = Base64.getEncoder().encode(base64);
         return new String(decode, StandardCharsets.UTF_8);
     }
 }
