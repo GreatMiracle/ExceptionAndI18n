@@ -20,8 +20,13 @@ public class ExceptionAndI18nController {
         this.testApiService = testApiService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/hello")
     public ResponseEntity<BodyResponseDTO<Object>> getAllABC() {
         return RestResponseWrapper.getSuccess( testApiService.testException(), messageUtils);
+    }
+
+    @GetMapping("/hello1")
+    public ResponseEntity<String> getStringFeign() {
+        return ResponseEntity.ok("test call Feign from other service to demo-service");
     }
 }
