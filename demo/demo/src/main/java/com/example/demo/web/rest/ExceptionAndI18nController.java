@@ -20,7 +20,7 @@ public class ExceptionAndI18nController {
         this.testApiService = testApiService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/kien-exception")
     public ResponseEntity<BodyResponseDTO<Object>> getAllABC() {
         return RestResponseWrapper.getSuccess( testApiService.testException(), messageUtils);
     }
