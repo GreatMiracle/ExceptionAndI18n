@@ -186,6 +186,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- optional - only needed when using kafka-streams -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
