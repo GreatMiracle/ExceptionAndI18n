@@ -60,4 +60,13 @@ public class JsonF {
         }
     }
 
+    public static String writeAsString(Object o) {
+        try {
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(o);
+        } catch (JsonProcessingException ex) {
+            logger.error(ex.getMessage(), ex);
+            return null;
+        }
+    }
+
 }

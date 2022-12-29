@@ -1,6 +1,9 @@
 package com.example.demo.config;
 
+import com.example.demo.util.JsonF;
+import com.example.demo.util.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -141,7 +144,13 @@ public class LoggingAspect {
                 if (arg instanceof HttpServletRequest) {
                     continue;
                 }
-                log.info("Start call api  [{}] \n [{}]\n request: {}", request.getRequestURI(), requestId, obj.writeValueAsString((arg)));
+                String objAsJson = obj.writeValueAsString(arg);
+                JsonNode jsonTree = obj.readTree(objAsJson);
+                Utils.removeFieldFromNode(jsonTree, "fileStream");
+                Utils.removeFieldFromNode(jsonTree, "base64");
+                log.info("Start call api  [{}] \n [{}]\n request: {}", request.getRequestURI(), requestId, JsonF.writeAsString((jsonTree)));
+
+//                log.info("Start call api  [{}] \n [{}]\n request: {}", request.getRequestURI(), requestId, obj.writeValueAsString((arg)));
             }
         }
 
