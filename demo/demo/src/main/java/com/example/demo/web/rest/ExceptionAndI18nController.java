@@ -4,11 +4,13 @@ import com.example.demo.service.testApiService;
 import com.example.demo.util.BodyResponseDTO;
 import com.example.demo.util.MessageUtils;
 import com.example.demo.util.RestResponseWrapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 //@RequiredArgsConstructor
 public class ExceptionAndI18nController {
 
@@ -21,7 +23,7 @@ public class ExceptionAndI18nController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<BodyResponseDTO<Object>> getAllABC() {
+    public ResponseEntity<BodyResponseDTO<Object>> getAllABC(){
         return RestResponseWrapper.getSuccess( testApiService.testException(), messageUtils);
     }
 }
