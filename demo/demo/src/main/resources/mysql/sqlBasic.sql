@@ -12,6 +12,12 @@ CREATE TABLE `testconfigs`.`users_roles` (
   `user_id` INT PRIMARY KEY,
   `role_id` INT PRIMARY KEY
  );
+
+-- CREATE TABLE `testconfigs`.`users_roles` (
+--                                              `id` INT PRIMARY KEY AUTO_INCREMENT,
+--                                              `user_id` INT unique,
+--                                              `role_id` INT unique
+-- );
   
   CREATE TABLE `testconfigs`.`roles` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
