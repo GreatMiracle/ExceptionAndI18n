@@ -1,9 +1,11 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.service.ExportService;
+import com.example.demo.util.ExcelHelper;
 import com.example.demo.util.ExcelUtils;
 import com.example.demo.util.annotation.*;
 import com.example.demo.util.exception.RequireException;
+import com.example.demo.web.rest.dto.DailyLimitClosingReportReq;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -12,20 +14,18 @@ import org.dhatim.fastexcel.BorderStyle;
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -271,6 +271,30 @@ public class SimpleExportServiceImpl implements ExportService {
             strValue = booleanValue.falseValue();
         }
         return strValue;
+    }
+
+
+
+//test export khi truyền param như jasper
+    public ByteArrayOutputStream exportDailyLimitClosingReportExcel(DailyLimitClosingReportReq req) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        if (req != null) {
+            Resource inputResource;
+            Map<String, Object> data = new HashMap<>();
+            if (req.getTitle().equals("BC_DONG_HM_THEO_NGAY")) {
+                inputResource = new ClassPathResource("template/EXCEL/BC_DONG_HM_THEO_NGAY.xlsx");
+                data.put("fromDate", req.getFromDate());
+                data.put("toDate", req.getToDate());
+            } else if (req.getTitle().equals("BC_THE_DONG_THEO_NGAY")) {
+                inputResource = new ClassPathResource("template/EXCEL/BC_THE_DONG_THEO_NGAY.xlsx");
+            } else { //title:HAN_MUC_CAN_DONG
+                inputResource = new ClassPathResource("template/EXCEL/HAN_MUC_CAN_DONG.xlsx");
+            }
+            data.put("data", req.getBaocaos());
+            data.put("currentTime", req.getCurrentTime());
+            outputStream = ExcelHelper.createAndDownloadDocument(inputResource, data);
+        }
+        return outputStream;
     }
 
 }
