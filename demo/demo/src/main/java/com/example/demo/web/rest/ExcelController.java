@@ -80,4 +80,43 @@ public class ExcelController {
         return ResponseEntity.ok().headers(headers).body(byteArr);
     }
 
+//    localhost:8080/export-daily-limit-closing-report-excel
+//    {
+//        "title": "HAN_MUC_CAN_DONG",
+//            "fromDate": "01/01/2022",
+//            "toDate": "01/01/2023",
+//            "currentTime": "01/01/2022 16:55:22",
+//            "baocaos": [
+//        {
+//            "stt": "test",
+//                "maKH": "test",
+//                "tenKH": "test",
+//                "tenTrenThe": "test",
+//                "soTaiKhoan": "test",
+//                "loaiThe": "test",
+//                "soThe": "test",
+//                "ngayDongTheT24": "test",
+//                "ngayDongTheW4": "test",
+//                "chiNhanhMoThe": "test",
+//                "nvDongThe": "test",
+//                "tenNVDongThe": "test",
+//                "maCNDongThe": "test",
+//                "tenCNDongThe": "test",
+//                "maHanMuc": "test",
+//                "giaTriHanMuc": "test",
+//                "tinhTrangDong": "test",
+//                "ngayDongHanMuc": "test",
+//                "cnDongHanMuc": "test",
+//                "nvDongHanMuc": "test",
+//                "nvDuyetDongHanMuc": "test",
+//                "ghiChuTrenHanMuc": "test",
+//                "ghiChu": "test",
+//                "ngayDuKienDongHanMuc": "test",
+//                "tinhTrangTaiKhoan": "tinhTrangTaiKhoan",
+//                "theChinhPhu": "theChinhPhu",
+//                "contrStatus": "contrStatus"
+//        }
+//    ]
+//    }
+
 }
