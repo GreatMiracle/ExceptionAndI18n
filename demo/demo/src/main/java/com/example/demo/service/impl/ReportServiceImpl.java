@@ -121,4 +121,43 @@ public class ReportServiceImpl implements ReportService {
         }
     }
 
+    //postman:
+//    {
+//        "mailDto": {
+//        "emailTo": ["lethesieu@gmail.com"],
+//        "subject": "test mail attach",
+//                "template": "Công ty Công Nghệ KienNT kính gửi Quý khách hàng Senior Siêu"
+//    },
+//        "incredibleVoiceTemplateDTO": {
+//        "maKhachHang": "1998",
+//                "soTK": "1998",
+//                "tenKhachHang": "Lê Thế Siêu",
+//                "ngheNghiep": "Lập trình viên",
+//                "chucVu": "Senior java",
+//                "thuNhap": "100 triệu",
+//                "cbLoiNhuan": "X",
+//                "cbTienBDS": "X",
+//                "cbChuaXacDinh": "X",
+//                "cbQuaTangThuaKe": "X",
+//                "cbTienLuong": "X",
+//                "cbTietKiem": "",
+//                "cbThuNhap": "X",
+//                "tenCoQuan": "BmbSoft",
+//                "diaChiCoQuan": "Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội",
+//                "sdtCoQuan": "0923573463",
+//                "noiLapPhieu": "Hà Nội",
+//                "ngay": "07",
+//                "thang": "04",
+//                "nam": "2023",
+//                "inputter": "Nguyễn Trung Kiên",
+//                "nguoiKiemSoat": "Kiên",
+//                "authorier": "Kien",
+//                "coCode": "VND",
+//                "coName": "TP BAnk",
+//                "soGDHeader": "5678467834573",
+//                "ngayGioHeader": "07/04/2023",
+//                "user": "Kien"
+//    }
+//    }
+
 }
