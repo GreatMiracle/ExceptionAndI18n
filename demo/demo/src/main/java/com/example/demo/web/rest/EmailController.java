@@ -3,6 +3,7 @@ package com.example.demo.web.rest;
 import com.example.demo.config.enums.ApiResponseCode;
 import com.example.demo.service.impl.EmailSenderService;
 import com.example.demo.util.exception.RestException;
+import com.example.demo.web.rest.dto.MailAttachDto;
 import com.example.demo.web.rest.dto.MailDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,20 @@ public class EmailController {
         String status;
         try {
             status = emailSenderService.sendEmail(details);
+        } catch ( MessagingException e){
+            throw  new RestException(ApiResponseCode.TEST_I18N);
+        }
+        return status;
+    }
+
+
+    // Sending email with attachment PDF file
+    @PostMapping("/sendMailAattach")
+    public String sendMailWithAttachment(
+            @RequestBody MailAttachDto details) {
+        String status;
+        try {
+            status = emailSenderService.sendEmailAttach(details);
         } catch ( MessagingException e){
             throw  new RestException(ApiResponseCode.TEST_I18N);
         }
