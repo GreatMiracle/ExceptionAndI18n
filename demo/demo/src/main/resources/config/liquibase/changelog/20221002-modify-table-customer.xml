@@ -3,7 +3,7 @@
 
     <changeSet id="20221002_1015-UPDATE-RECORD-CUSTOMER" author="ntkien16">
         <sql>
-            INSERT INTO `customer` (`age`, `username`, `address`) VALUES ('14', 'nguyen văn a', 'ha noi');
+            INSERT INTO `customer` (`age`, `username`, `address`) VALUES ('14', 'nguyen van a', 'ha noi');
 
         </sql>
     </changeSet>
