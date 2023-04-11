@@ -6,9 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = " SELECT u.email FROM User u ")
     List<String> listUser1();
+
+    Optional<User> findByEmailAndEnabledIsTrue(String email);
+
+    boolean existsByEmail(String email);
 }
